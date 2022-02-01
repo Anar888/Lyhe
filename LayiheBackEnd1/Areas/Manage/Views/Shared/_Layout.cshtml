@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="~/manage/assets/img/logo/logoadmin.png" rel="icon">
+    <title>RuangAdmin - Dashboard</title>
+    <link href="~/manage/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="~/manage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/manage/assets/css/ruang-admin.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top" style="background-color:powderblue">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <ul  class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon">
+                    <img src="~/manage/assets/img/logo/logoadmin.png">
+                </div>
+                <div class="sidebar-brand-text mx-3">JuanAdminPanel</div>
+            </a>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item active">
+                <a class="nav-link" asp-controller="dashboard" asp-action="index" >
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Tables
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="slider" asp-action="index">
+
+                    <span>Sliders</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="banner" asp-action="index">
+
+                    <span>Banners</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="blog" asp-action="index">
+
+                    <span>Blogs</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="brand" asp-action="index">
+
+                    <span>Brands</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="category" asp-action="index">
+
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="color" asp-action="index">
+
+                    <span>Colors</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="policy" asp-action="index">
+
+                    <span>Policies</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="product" asp-action="index">
+
+                    <span>Products</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="ui-colors.html">
+
+                    <span>Settings</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Examples
+            </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true"
+                   aria-controls="collapsePage">
+                    <i class="fas fa-fw fa-columns"></i>
+                    <span>Pages</span>
+                </a>
+                <div id="collapsePage" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Example Pages</h6>
+                        <a class="collapse-item" href="login.html">Login</a>
+                        <a class="collapse-item" href="register.html">Register</a>
+                        <a class="collapse-item" href="404.html">404 Page</a>
+                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="charts.html">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Charts</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
+            <div class="version" id="version-ruangadmin"></div>
+        </ul>
+        <!-- Sidebar -->
+        @RenderBody();
+    </div>
+
+    <!-- Scroll to top -->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <script src="~/manage/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/manage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/manage/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/manage/assets/js/ruang-admin.min.js"></script>
+    <script src="~/manage/assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="~/manage/assets/js/demo/chart-area-demo.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/manage/assets/js/main.js"></script>
+    @RenderSection("Scripts",required:false);
+</body>
+
+</html>

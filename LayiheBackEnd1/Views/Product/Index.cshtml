@@ -1,0 +1,277 @@
+﻿
+@model ProductViewModel
+
+    <main>
+        <!-- breadcrumb area start -->
+        <div class="breadcrumb-area bg-img" data-bg="~/assets/img/banner/breadcrumb-banner.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcrumb-wrap text-center">
+                            <nav aria-label="breadcrumb">
+                                <h1 class="breadcrumb-title">shop</h1>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="index">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">shop</li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- breadcrumb area end -->
+        <!-- page main wrapper start -->
+        <div class="shop-main-wrapper section-padding">
+            <div class="container">
+                <div class="row">
+                    <!-- sidebar area start -->
+                    <div class="col-lg-3 order-2 order-lg-1">
+                        <div class="sidebar-wrapper">
+
+                            <!-- single sidebar start -->
+                            <div class="sidebar-single">
+                                <div class="sidebar-title">
+                                    <h3>Brands</h3>
+                                </div>
+                                <div class="sidebar-body">
+                                    <ul class="color-list">
+                                        @foreach (var item in Model.Brands)
+                                        {
+                                            <li><a style="color:@(ViewBag.BrandId==item.Id?"#62ab00":"")" asp-action="index" asp-route-brandid="@item.Id">@item.Name <span>(@item.Products.Count)</span></a></li>
+                                        }
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- single sidebar end -->
+                            <!-- single sidebar start -->
+                            <div class="sidebar-single">
+                                <div class="sidebar-title">
+                                    <h3>filter by price</h3>
+                                </div>
+                                <div class="sidebar-body">
+                                    <div class="price-range-wrap">
+                                        <div class="price-range" data-min="20" data-max="400"></div>
+                                        <div class="range-slider">
+                                            <form action="#">
+                                                <div class="price-input">
+                                                    <label for="amount">Price: </label>
+                                                    <input type="text" id="amount">
+                                                </div>
+                                                <button class="filter-btn">filter</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- single sidebar end -->
+                            <!-- single sidebar start -->
+                            <div class="sidebar-single">
+            <div class="sidebar-title">
+                <h3>Colors</h3>
+            </div>
+            <div class="sidebar-body">
+                <ul class="color-list">
+                    @foreach (var item in Model.Colors)
+                    {
+                        <li><a style="color:@(ViewBag.ColorId==item.Id?"red":"")" asp-action="index" asp-route-colorid="@item.Id">@item.Name <span>(@item.ProductColors.Count)</span></a></li>
+
+                    }
+
+                </ul>
+            </div>
+        </div>
+                            <!-- single sidebar start -->
+                            <div class="sidebar-single">
+                                <div class="sidebar-title">
+                                    <h3>Categories</h3>
+                                </div>
+                                <div class="sidebar-body">
+                                    <ul class="color-list">
+                                        @foreach (var item in Model.Categories)
+                                        {
+                                            <li><a style="color:@(ViewBag.CategoryId==item.Id?"#62ab00":"")" asp-action="index" asp-route-categoryid="@item.Id">@item.Name <span>(@item.Products.Count)</span></a></li>
+                                        }
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- single sidebar end -->
+                            <!-- single sidebar end -->
+                            <!-- single sidebar start -->
+                            <div class="sidebar-single">
+                                <div class="sidebar-banner">
+                                    <a href="#">
+                                        <img src="~/assets/img/banner/banner_left.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- single sidebar end -->
+                        </div>
+                    </div>
+                    <!-- sidebar area end -->
+                    <!-- shop main wrapper start -->
+                    <div class="col-lg-9 order-1 order-lg-2">
+                        <div class="shop-product-wrapper">
+                            <!-- shop product top wrap start -->
+                            <div class="shop-top-bar">
+                                <div class="row">
+                                    <div class="col-xl-5 col-lg-4 col-md-3 order-2 order-md-1">
+                                        <div class="top-bar-left">
+                                            <div class="product-view-mode">
+                                                <a class="active" href="#" data-target="grid-view"><i class="fa fa-th"></i></a>
+                                                <a href="#" data-target="list-view"><i class="fa fa-list"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-7 col-lg-8 col-md-9 order-1 order-md-2">
+                                        <div class="top-bar-right">
+                                            <div class="product-short">
+                                                <p>Sort By : </p>
+                                                <select class="nice-select" name="sortby">
+                                                    <option value="trending">Relevance</option>
+                                                    <option value="sales">Name (A - Z)</option>
+                                                    <option value="sales">Name (Z - A)</option>
+                                                    <option value="rating">Price (Low &gt; High)</option>
+                                                    <option value="date">Rating (Lowest)</option>
+                                                    <option value="price-asc">Model (A - Z)</option>
+                                                    <option value="price-asc">Model (Z - A)</option>
+                                                </select>
+                                            </div>
+                                            <div class="product-amount">
+                                                <p>Showing 1–16 of 21 results</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- shop product top wrap start -->
+                            <!-- product item list start -->
+                            <div class="shop-product-wrap grid-view row mbn-50">
+                                @foreach (var item in Model.Products)
+                                {
+                                    <div class="col-lg-4 col-sm-6">
+                                        <!-- product grid item start -->
+                                        <div class="product-item mb-53">
+                                            <div class="product-thumb">
+                                                <a href="product-details.html">
+                                                    <img src="~/assets/img/product/@item.ProductImages.FirstOrDefault(x=>x.PosterStatus==true)?.Image" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-content">
+                                                <h5 class="product-name">
+                                                    <a href="product-details.html">@item.Name</a>
+                                                </h5>
+                                                <div class="price-box">
+                                                    @if (item.DiscountPercent > 0)
+                                                    {
+
+                                                        <span class="regular-price">$@((item.SalePrice * (1- item.DiscountPercent/100)).ToString("0.00"))</span>
+                                                        <span class="old-price"><del>$@item.SalePrice</del></span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="regular-price">$@item.SalePrice</span>
+
+                                                    }
+                                                </div>
+                                                <div class="product-action-link">
+                                                    <a href="#" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="Add To Cart"><i class="ion-bag"></i></a>
+                                                    <a asp-action="getproduct" asp-controller="product" asp-route-id="@item.Id" class="open-product-modal">
+                                                        <i class="ion-ios-eye-outline"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- product grid item end -->
+                                        <!-- product list item start -->
+                                        <div class="product-list-item mb-30">
+                                            <div class="product-thumb">
+                                                <a href="product-details.html">
+                                                    <img src="~/assets/img/product/@item.ProductImages.FirstOrDefault(x=>x.PosterStatus==true)?.Image" alt="product thumb">
+                                                </a>
+                                            </div>
+                                            <div class="product-content-list">
+                                                <h5 class="product-name">
+                                                    <a href="product-details.html">@item.Name</a>
+                                                </h5>
+                                                <div class="price-box">
+                                                    @if (item.DiscountPercent > 0)
+                                                    {
+
+                                                        <span class="regular-price">$@((item.SalePrice * (1- item.DiscountPercent/100)).ToString("0.00"))</span>
+                                                        <span class="old-price"><del>$@item.SalePrice</del></span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="regular-price">$@item.SalePrice</span>
+
+                                                    }
+                                                </div>
+                                                <p>@item.Desc
+                                                </p>
+                                                <div class="product-link-2 position-static">
+                                                    <a href="#" data-toggle="tooltip" title="Wishlist"><i class="ion-android-favorite-outline"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="Add To Cart"><i class="ion-bag"></i></a>
+                                                    <a asp-action="getproduct" asp-controller="product" asp-route-id="@item.Id" class="open-product-modal">
+                                                        <i class="ion-ios-eye-outline"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- product list item start -->
+                                    </div>
+                                }
+
+                            </div>
+                            <!-- product item list end -->
+                            <!-- start pagination area -->
+                            <div class="paginatoin-area text-center mt-45">
+                                <ul class="pagination-box">
+
+                                    <li>
+                                        @if (ViewBag.PageIndex != 1)
+                                        {
+
+                                            <a asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)" asp-route-categoryid="@ViewBag.CategoryId" asp-route-colorid="@ViewBag.ColorId" asp-route-brandid="@ViewBag.BrandId" class="Previous">
+                                                <i class="ion-ios-arrow-left"></i>
+                                            </a>
+
+                                        }
+                                        else
+                                        {
+                                            <a class="Previous"><i class="ion-ios-arrow-left"></i></a>
+                                        }
+                                    </li>
+                                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                                    {
+                                        <li class="@(i==ViewBag.PageIndex?"active":"")"><a asp-action="index" asp-route-page="@i" asp-route-categoryid="@ViewBag.CategoryId" asp-route-colorid="@ViewBag.ColorId" asp-route-brandid="@ViewBag.BrandId">@i</a></li>
+                                    }
+                                    <li>
+                                        @if (ViewBag.PageIndex != ViewBag.TotalPages)
+                                        {
+                                            <a class="Next" asp-action="index" asp-route-page="@(ViewBag.PageIndex+1)" asp-route-categoryid="@ViewBag.CategoryId" asp-route-colorid="@ViewBag.ColorId" asp-route-brandid="@ViewBag.BrandId">
+                                                <i class="ion-ios-arrow-right"></i>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                        <a class="Next" ><i class="ion-ios-arrow-right"></i></a>
+                                    }
+                                        </li>
+                                        
+                                    </ul>
+                            </div>
+                            <!-- end pagination area -->
+                        </div>
+                    </div>
+                    <!-- shop main wrapper end -->
+                </div>
+            </div>
+        </div>
+        <!-- page main wrapper end -->
+    </main>
+
+   

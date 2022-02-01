@@ -1,0 +1,69 @@
+﻿@model Slider
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1>Edit</h1>
+            <form asp-action="edit" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="SubTitle">SubTitle</label>
+                    <input class="form-control" asp-for="SubTitle" placeholder="Enter Subtitle">
+                    <span class="text-danger" asp-validation-for="SubTitle"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title">Title</label>
+                    <input class="form-control" asp-for="Title" placeholder="Enter Title">
+                    <span class="text-danger" asp-validation-for="Title"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Descrption">Descrption</label>
+                    <input class="form-control" asp-for="Descrption" placeholder="Enter Descrption">
+                    <span class="text-danger" asp-validation-for="Descrption"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BtnUrl">BtnUrl</label>
+                    <input class="form-control" asp-for="BtnUrl" placeholder="Enter BtnUrl">
+                    <span class="text-danger" asp-validation-for="BtnUrl"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BtnText">BtnText</label>
+                    <input class="form-control" asp-for="BtnText" placeholder="Enter BtnText">
+                    <span class="text-danger" asp-validation-for="BtnText"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Order">Order</label>
+                    <input class="form-control" asp-for="Order" placeholder="Enter Order">
+                    <span class="text-danger" asp-validation-for="Order"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ImageFile">ImageFile</label>
+                    <input class="form-control" asp-for="ImageFile" placeholder="Select image">
+                    <span class="text-danger" asp-validation-for="ImageFile"></span>
+                    @if (Model.BackImage != null)
+                    {
+                        <div class="img-box" style="position:relative;display:inline-block">
+                            <i class="fas fa-times remove-img-box" style="position: absolute;right: -5px;top: -8px; color: red; cursor: pointer;"></i>
+                            <input type="hidden" name="BackImage" value="@Model.BackImage" />
+                            <img width="250" src="~/uploads/slider/@Model.BackImage" />
+                        </div>
+                    }
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+    $(document).ready(function () {
+        $(document).on("click", ".remove-img-box", function () {
+            $(this).parent().remove()
+        })
+    })
+    </script>
+}

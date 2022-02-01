@@ -1,0 +1,30 @@
+﻿@model Banner
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1>Delete</h1>
+            <form asp-action="delete" method="post">
+                <div class="form-group">
+                    <label asp-for="Title1">Title1</label>
+                    <input readonly class="form-control" asp-for="Title1">
+                    <span class="text-danger" asp-validation-for="Title1"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title2">Title2</label>
+                    <input readonly class="form-control" asp-for="Title2">
+                    <span class="text-danger" asp-validation-for="Title2"></span>
+                </div>
+                <button type="submit" id="butdelet" class="btn btn-danger">Delete</button>
+
+            </form>
+
+        </div>
+        <div class="col-lg-4 mx-auto">
+            <a asp-action="index" class="btn btn-primary">Go to List</a>
+        </div>
+    </div>
+</div>
